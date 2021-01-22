@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EkoWebShop.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,18 @@ namespace EkoWebShop.Controllers
 {
     public class CustomerController : Controller
     {
+
+        private readonly ApplicationDbContext _db;
+
+        public CustomerController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+        
         // GET: CustomerController
         public ActionResult Index()
         {
-            return View();
+            return View(_db.Products.OrderByDescending(p => p.Id).Take(3).ToList()); //SHOW LAST 3 ADDED PRODUCTS WHEN 
         }
 
         // GET: CustomerController/Details/5

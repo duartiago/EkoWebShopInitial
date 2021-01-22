@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace EkoWebShop.Controllers
 {
     public class ProductController : Controller
@@ -25,51 +26,52 @@ namespace EkoWebShop.Controllers
             
         }
 
-        // GET: ProductController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: ProductController/Create
+        // GET for create
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: ProductController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        //post for create
+        [HttpPost] // this tells the program that this will post to db
+        [ValidateAntiForgeryToken] // Protects from some kinda attack
+        //something to do when we click create and action "submit/post" gets called
+        public IActionResult Create(Product obj)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+            _db.Products.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+
         }
+        
+        
 
-        // GET: ProductController/Edit/5
-        public ActionResult Edit(int id)
+
+       
+        // GET: ProductController/Edit/3
+        public ActionResult Edit(int? id)
         {
-            return View();
+            var productfromDb = _db.Products.Find(id);
+
+            return View(productfromDb);
         }
 
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Product product)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _db.Products.Update(product);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+               return NotFound();
             }
         }
 

@@ -10,10 +10,35 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\apple-gala.jpg" />
+    <None Include="wwwroot\Images\avocado.jpg" />
+    <None Include="wwwroot\Images\cucumber.jpg" />
+    <None Include="wwwroot\Images\green cabagge.jpg" />
+    <None Include="wwwroot\Images\logo.png" />
+    <None Include="wwwroot\Images\papaya.jpg" />
+    <None Include="wwwroot\Images\peanuts.jpg" />
+    <None Include="wwwroot\Images\silver-banana.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\apple-gala_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\avocado_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\couve_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\cucumber_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\kasava_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\mamao_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\peanuts_tn.jpg" />
+    <None Include="wwwroot\Images\Thumbnails\silver-banana_tn.jpg" />
+    <None Include="wwwroot\Images\wahoo.jpg" />
   </ItemGroup>
 
 </Project>
