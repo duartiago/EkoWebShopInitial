@@ -35,25 +35,28 @@ namespace EkoWebShop.Controllers
             return View();
         }
 
-        // GET: ProducerController/Create
+        // GET: ProducerController/Create - page we GET to create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProducerController/Create
+        // POST: ProducerController/Create - Post the create to DB
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Producer obj)
         {
-            try
+            if (ModelState.IsValid) // This here is the DB side validation, together with the thingis added in the model class: required, range etc.
             {
-                return RedirectToAction(nameof(Index));
+                _db.Producers.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch
+            else
             {
-                return View();
+                return View(obj);
             }
+
         }
 
         // GET: ProducerController/Edit/5
@@ -78,24 +81,29 @@ namespace EkoWebShop.Controllers
         }
 
         // GET: ProducerController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
-            return View();
-        }
 
-        // POST: ProducerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            if (id == null || id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
+            else
             {
-                return View();
+                var ProducerFromDb = _db.Producers.Find(id); // this works! It goes looking for the primary key! 
+
+                if (ProducerFromDb == null)
+                    return NotFound();
+                else
+                {
+
+                    _db.Producers.Remove(ProducerFromDb);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
             }
+
         }
     }
 }
