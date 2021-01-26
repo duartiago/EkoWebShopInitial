@@ -1,6 +1,14 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+body {
+    background-image: url('../Images/pattern.png');
+    background-repeat: repeat;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -68,4 +76,27 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color: white
 }
+
+/* Border Frame
+---------------------------------------------------- */
+.slider_container {
+    position: relative;
+}
+
+.slider_container {
+    position:relative;
+    width: 100%;
+}
+
+.slider_container .border_box {
+    position: absolute;
+    border: 3px solid #fff;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 10px;
+}
+
+
